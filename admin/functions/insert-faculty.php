@@ -1,0 +1,118 @@
+<?php
+include('../../connection/connection.php');
+date_default_timezone_set('Asia/Manila');
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Sanitize inputs
+    $rfid_no = filter_input(INPUT_POST, 'rfid_no', FILTER_SANITIZE_STRING);
+    $fname = filter_input(INPUT_POST, 'fname', FILTER_SANITIZE_STRING);
+    $mname = filter_input(INPUT_POST, 'mname', FILTER_SANITIZE_STRING);
+    $lname = filter_input(INPUT_POST, 'lname', FILTER_SANITIZE_STRING);
+    $suffix = filter_input(INPUT_POST, 'suffix', FILTER_SANITIZE_STRING);
+    $sex = filter_input(INPUT_POST, 'sex', FILTER_SANITIZE_STRING);
+    $dob = filter_input(INPUT_POST, 'dob', FILTER_SANITIZE_STRING);
+    $phone_no = filter_input(INPUT_POST, 'phone_no', FILTER_SANITIZE_STRING);
+    $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+    $acc_type = filter_input(INPUT_POST, 'acc_type', FILTER_SANITIZE_STRING);
+    $dept_id = filter_input(INPUT_POST, 'dept_id', FILTER_SANITIZE_NUMBER_INT);
+
+    $region = filter_input(INPUT_POST, 'region', FILTER_SANITIZE_STRING);
+    $province = filter_input(INPUT_POST, 'province', FILTER_SANITIZE_STRING);
+    $city = filter_input(INPUT_POST, 'city', FILTER_SANITIZE_STRING);
+    $zip_code = filter_input(INPUT_POST, 'zip_code', FILTER_SANITIZE_STRING);
+    $address_dtl = filter_input(INPUT_POST, 'address_dtl', FILTER_SANITIZE_STRING);
+
+    // File upload handling
+    $picture_path = null;
+    $image_binary = null;
+
+    if (isset($_FILES['picture_path']) && $_FILES['picture_path']['error'] === UPLOAD_ERR_OK) {
+        $target_dir = '../../uploads/prof_images/';
+        $picture_path = $target_dir . basename($_FILES['picture_path']['name']);
+
+        // Move uploaded file
+        if (move_uploaded_file($_FILES['picture_path']['tmp_name'], $picture_path)) {
+            // Read the binary content of the uploaded file
+            $image_binary = file_get_contents($picture_path);
+        } else {
+            $message = "Failed to upload image.";
+            $type = "error";
+            header("Location: ../pages/admin-new-faculty.php?message=" . urlencode($message) . "&type=" . urlencode($type));
+            exit();
+        }
+    }
+
+    // Begin transaction
+    sqlsrv_begin_transaction($conn);
+
+    try {
+        // Validate if RFID already exists
+        $sql_check_rfid = "SELECT COUNT(*) AS count FROM Faculty WHERE rfid_no = ?";
+        $stmt_check_rfid = sqlsrv_query($conn, $sql_check_rfid, [$rfid_no]);
+        $row_check_rfid = sqlsrv_fetch_array($stmt_check_rfid, SQLSRV_FETCH_ASSOC);
+
+        if ($row_check_rfid['count'] > 0) {
+            throw new Exception("RFID number already exists.");
+        }
+
+        // Validate Program Chair and Dean per department
+        if ($acc_type === 'Program Chair' || $acc_type === 'Dean') {
+            $sql_check_acc_type = "SELECT COUNT(*) AS count 
+                                   FROM Faculty f
+                                   INNER JOIN UserDepartment ud ON f.rfid_no = ud.rfid_no
+                                   WHERE ud.dept_id = ? AND f.acc_type = ?";
+            $stmt_check_acc_type = sqlsrv_query($conn, $sql_check_acc_type, [$dept_id, $acc_type]);
+            $row_check_acc_type = sqlsrv_fetch_array($stmt_check_acc_type, SQLSRV_FETCH_ASSOC);
+
+            if ($row_check_acc_type['count'] > 0) {
+                throw new Exception("Only one $acc_type is allowed.");
+            }
+        }
+
+        // Insert into Faculty table
+        $sql_faculty = "INSERT INTO Faculty (rfid_no, fname, mname, lname, suffix, sex, dob, phone_no, email, acc_type, picture_path, image_binary) 
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CONVERT(VARBINARY(MAX), ?))";
+
+        $params_faculty = [$rfid_no, $fname, $mname, $lname, $suffix, $sex, $dob, $phone_no, $email, $acc_type, $picture_path, $image_binary];
+        $stmt_faculty = sqlsrv_query($conn, $sql_faculty, $params_faculty);
+
+        if ($stmt_faculty === false) {
+            throw new Exception(print_r(sqlsrv_errors(), true));
+        }
+
+        // Insert into FacultyAddresses table
+        $sql_address = "INSERT INTO FacultyAdresses (region, province, city, zip_code, address_dtl, rfid_no) 
+                        VALUES (?, ?, ?, ?, ?, ?)";
+        $params_address = [$region, $province, $city, $zip_code, $address_dtl, $rfid_no];
+        $stmt_address = sqlsrv_query($conn, $sql_address, $params_address);
+
+        if ($stmt_address === false) {
+            throw new Exception(print_r(sqlsrv_errors(), true));
+        }
+
+        // Insert into UserDepartment table
+        $sql_user_dept = "INSERT INTO UserDepartment (rfid_no, dept_id) 
+                          VALUES (?, ?)";
+        $params_user_dept = [$rfid_no, $dept_id];
+        $stmt_user_dept = sqlsrv_query($conn, $sql_user_dept, $params_user_dept);
+
+        if ($stmt_user_dept === false) {
+            throw new Exception(print_r(sqlsrv_errors(), true));
+        }
+
+        // Commit transaction
+        sqlsrv_commit($conn);
+
+        $message = "Faculty data successfully added.";
+        $type = "success";
+    } catch (Exception $e) {
+        sqlsrv_rollback($conn); // Rollback transaction
+        $message = "Failed to insert data: " . $e->getMessage();
+        $type = "error";
+    }
+
+    // Redirect with message in URL
+    header("Location: ../pages/admin-new-faculty.php?message=" . urlencode($message) . "&type=" . urlencode($type));
+    exit();
+}
+?>

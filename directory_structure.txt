@@ -1,0 +1,28 @@
+## Project Structure
+
+```plaintext
+'
+F-Connect/
+├── admin/                        # Admin files resides here
+├── assets/                       # Assets for the project resides here     
+│   ├── css/                      # CSS files
+│   ├── db/                       
+│   │   └── faconnec_db.sql       # SQL file to set up the database
+│   ├── images/                   # Images directory
+│   ├── js/                       # JavaScript files
+│   └── map/                      # JavaScript models for Face API   
+├── connection/
+|   └── connection.php            # Database connection script
+├── kiosk/
+|   ├── faculty/                  #Faculty files resides here
+|   ├── functions/                #Functions for the kiosk reside in here
+|   ├── labeled_images/           #Facial data of the faculty will be saved here
+|   ├── map/                      #The map for kiosk is store in here
+|   ├── student/                  #Faculty files resides here
+|   ├── kiosk-index.php           #Main entry point for kiosk page
+|   ├── kiosk-org-chart.php       #File for the organizational chart
+|   └── kiosk-sched.php           #File for the organizational chart
+├── profile/                      #The faculty profile will be save here
+├── index.php                     # Main entry point for all pages
+└── directory-structure.txt       # Project Structure
+

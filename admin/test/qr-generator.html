@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        #qr-container {
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid #000;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <h2>QR Code Generator</h2>
+    <input type="text" id="qr-text" placeholder="Enter text or URL" />
+    <button onclick="generateQR()">Generate QR</button>
+    <div id="qr-container">
+        <div id="qrcode"></div>
+    </div>
+    <br>
+    <button onclick="exportPDF()">Export as PDF</button>
+    <button onclick="printQR()">Print</button>
+    
+    <script>
+        function generateQR() {
+            let qrText = document.getElementById("qr-text").value;
+            document.getElementById("qrcode").innerHTML = "";
+            new QRCode(document.getElementById("qrcode"), {
+                text: qrText,
+                width: 128,
+                height: 128
+            });
+        }
+
+        function exportPDF() {
+            const { jsPDF } = window.jspdf;
+            let doc = new jsPDF();
+            let qrElement = document.getElementById("qrcode").getElementsByTagName("img")[0];
+            if (!qrElement) {
+                alert("Please generate a QR code first.");
+                return;
+            }
+            let qrDataURL = qrElement.src;
+            doc.text("Generated QR Code", 10, 10);
+            doc.addImage(qrDataURL, "PNG", 10, 20, 50, 50);
+            doc.save("qrcode.pdf");
+        }
+
+        function printQR() {
+            let qrElement = document.getElementById("qrcode").innerHTML;
+            if (!qrElement) {
+                alert("Please generate a QR code first.");
+                return;
+            }
+            let newWindow = window.open('', '', 'width=600,height=600');
+            newWindow.document.write('<html><head><title>Print QR Code</title></head><body>');
+            newWindow.document.write('<div style="text-align: center;">' + qrElement + '</div>');
+            newWindow.document.write('</body></html>');
+            newWindow.document.close();
+            newWindow.print();
+        }
+    </script>
+</body>
+</html>

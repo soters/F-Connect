@@ -1,0 +1,552 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&famline-currentily=Sixtyfour&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Kaushan+Script&family=Red+Hat+Display:wght@400;700;900&display=swap');
+
+/*font-family: "DM Sans", sans-serif;*/
+/*font-family: "Sixtyfour", sans-serif;*/
+/*font-family: "Unbounded", sans-serif;*/
+/*font-family: "Staatliches", sans-serif;*/
+/*font-family: "IBM Plex Mono", monospace;*/
+/*font-family: "Barlow Semi Condensed", sans-serif;*/
+/*font-family: "Kanit", sans-serif;*/
+
+
+/*SIDE NAV DESIGNS*/
+
+#side_nav {
+    background: #3d5a80;
+    min-width: 360px;
+    max-width: 360px;
+    transition: all 0.2s;
+    margin-left: -360px;
+    border-right: solid 3px #90e0ef;
+
+}
+
+#side_nav.active {
+    margin-left: 0px;
+}
+
+.content {
+    min-height: 100vh;
+    width: 100%;
+}
+
+hr.h-color {
+    background: #eee;
+}
+
+#line {
+    background: #979393;
+}
+
+.nav-sections {
+    background-color: transparent;
+}
+
+.nav-sections a {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: .9em;
+    font-weight: 700;
+    font-family: "DM Sans", sans-serif;
+}
+
+.nav-sections a:hover {
+    background-color: #fff;
+    color: #003459;
+    border-radius: 4px;
+}
+
+.section-icons {
+    font-size: medium;
+    background-color: #fff;
+    padding: 5px;
+    color: #003459;
+    border-radius: 5px;
+    margin-right: 8px;
+}
+
+
+@media (max-width: 767px) {
+    #side_nav {
+        margin-left: -360px;
+        position: fixed;
+        min-height: 100vh;
+        z-index: 1;
+    }
+
+    #side_nav.active {
+        margin-left: 0;
+    }
+}
+
+/*NAV BAR AND SIDE BAR DESIGNS*/
+
+.title {
+    color: #e9e4e9;
+    font-size: 0.8em;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: "Unbounded", sans-serif;
+}
+
+.burger {
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.2em;
+}
+
+.nav-designs {
+    width: 100%;
+    background-color: #003459;
+    border-bottom: solid 3px #90e0ef;
+}
+
+.nav-designs2 {
+    width: 100%;
+    background-color: #f5f2f2f5;
+    border-radius: 7px;
+    margin-bottom: 20px;
+}
+
+
+.logo {
+    background-color: #fff;
+    border-radius: 2px;
+    color: #003459;
+    font-size: 0.8em;
+    font-weight: 700;
+    font-family: "Unbounded", sans-serif;
+}
+
+.current {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    font-family: "Barlow Semi Condensed", sans-serif;
+    color: #fff;
+    border-right: solid 2px #fff;
+}
+
+.current2 {
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: "DM Sans", sans-serif;
+    color: #003459;
+}
+
+.current:hover {
+    color: #fff;
+}
+
+.actives {
+    color: rgb(168, 206, 236) !important;
+    font-weight: 900;
+    font-size: 15px;
+}
+
+.times {
+    font-size: 12px;
+    letter-spacing: 5px;
+    float: left;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    color: #fff;
+}
+
+.dates {
+    font-size: 12px;
+    float: left;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+    color: #fff;
+    border-right: solid 2px #fff;
+}
+
+.profile {
+    text-decoration: none;
+    color: #FFF;
+    font-size: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
+}
+
+a:hover {
+    color: #fff;
+    /* Set the color for links when hovered over */
+}
+
+.times:hover {
+    color: #fff;
+}
+
+.dates:hover {
+    color: #fff;
+}
+
+.img-holder {
+    margin-left: 10px;
+    position: relative;
+    border: solid 2px #fff;
+    width: 40px;
+    height: 40px;
+}
+
+
+/*CURRENT TITLE & LINE DESIGNS*/
+
+.current-title {
+    font-size: 2.2em;
+    color: #2e2b2b;
+    margin-top: 12px;
+    font-family: "Kanit", sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.current-title2 {
+    font-size: 1em;
+    color: #003459;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.line-current {
+    opacity: 1;
+    color: #0b578d;
+}
+
+.line-current2 {
+    opacity: 1;
+    color: #c3c9cc;
+}
+
+/*HEADER CARD DESIGNS*/
+
+.header-design {
+    background-color: #13547a;
+    font-family: "Kanit", sans-serif;
+    color: #fff;
+    font-weight: 400;
+}
+
+.card-title-design {
+    font-size: 1.3em;
+    text-transform: uppercase;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 900;
+    color: #555050;
+}
+
+.card-text-design {
+    font-size: .8em;
+    font-family: "Kanit", sans-serif;
+    font-weight: 400;
+}
+
+
+/*CARDS LAYOUT DESIGNS*/
+
+.column-designs {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+/*LOGOUT DESIGNS*/
+
+.offcanvas {
+    color: #161d27;
+    font-size: medium;
+    font-family: "DM Sans", sans-serif;
+    max-height: 34%;
+    border-radius: 7px;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.offcanvas-title {
+    font-weight: 900;
+}
+
+.pfp-btn {
+    font-size: .8rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+.pfp-btn-holder {
+    margin-bottom: 10px;
+    text-align: center;
+    background-color: #00b4d8;
+    padding: 8px;
+    border-radius: 7px;
+}
+
+.pfp-btn-holder:hover {
+    font-size: 1rem;
+    background-color: #11235A;
+    /* Change to desired hover color */
+    transition: background-color 0.3s ease;
+    /* Add ease animation on hover */
+}
+
+.pfp-btn:hover {
+    font-size: .9rem;
+    transition: font-size 0.3s ease;
+}
+
+
+/*FOOTER DESIGNS*/
+
+.footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #003459;
+    border-top: solid 3px #90e0ef;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.footer-info {
+    font-size: .8em;
+    font-family: "Kanit", sans-serif;
+    color: #979393;
+}
+
+.footer-title {
+    font-family: "DM Sans", sans-serif;
+    color: #fff;
+    font-weight: 600;
+}
+
+
+/*SCROLL TOP BUTTON*/
+
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #fff;
+    color: #004F98;
+    cursor: pointer;
+    border-radius: 100%;
+    font-size: 20px;
+}
+
+#myBtn:hover {
+    background-color: #0d2338;
+    color: #fff;
+    /* Add a dark-grey background on hover */
+}
+
+
+#calendar {
+    text-transform: capitalize;
+    background-color: #fff;
+    box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
+        0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
+        0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 11px;
+    font-family: "DM Sans", sans-serif;
+    padding: 20px;
+    color: #2e2b2b;
+}
+
+
+.choose {
+    text-transform: capitalize;
+    background-color: #fff;
+    box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
+        0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
+        0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+    border-radius: 11px;
+    font-family: "DM Sans", sans-serif;
+    padding: 15px;
+    color: #2e2b2b;
+    margin-bottom: 10px;
+}
+
+.message {
+    background-color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-size: .9em;
+}
+
+/*DESIGN FOR THE MOVING BACKGROUND*/
+
+@-webkit-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+@-moz-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+@-o-keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+@keyframes bg-scrolling-reverse {
+    100% {
+        background-position: 50px 50px;
+    }
+}
+
+@-webkit-keyframes bg-scrolling {
+    0% {
+        background-position: 50px 50px;
+    }
+}
+
+@-moz-keyframes bg-scrolling {
+    0% {
+        background-position: 50px 50px;
+    }
+}
+
+@-o-keyframes bg-scrolling {
+    0% {
+        background-position: 50px 50px;
+    }
+}
+
+@keyframes bg-scrolling {
+    0% {
+        background-position: 50px 50px;
+    }
+}
+
+/* Main styles */
+body {
+    font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAIAAACRXR/mAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAIGNIUk0AAHolAACAgwAA+f8AAIDpAAB1MAAA6mAAADqYAAAXb5JfxUYAAABnSURBVHja7M5RDYAwDEXRDgmvEocnlrQS2SwUFST9uEfBGWs9c97nbGtDcquqiKhOImLs/UpuzVzWEi1atGjRokWLFi1atGjRokWLFi1atGjRokWLFi1af7Ukz8xWp8z8AAAA//8DAJ4LoEAAlL1nAAAAAElFTkSuQmCC") repeat 0 0;
+    -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+    -moz-animation: bg-scrolling-reverse 0.92s infinite;
+    -o-animation: bg-scrolling-reverse 0.92s infinite;
+    animation: bg-scrolling-reverse 0.92s infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+}
+
+/*BUTTON FOR ACTIONS DESIGNS*/
+
+.add-button {
+    --color: #5880b4;
+    font-family: "DM Sans", sans-serif;
+    font-size: .9em;
+    padding: 0.2em .8em;
+    background-color: transparent;
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: .5s;
+    font-weight: 500;
+    border: 1px solid;
+    color: var(--color);
+    z-index: 1;
+}
+
+.add-button::before,
+.add-button::after {
+    content: '';
+    display: block;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    position: absolute;
+    border-radius: 50%;
+    z-index: -1;
+    background-color: var(--color);
+    transition: 1s ease;
+    color: #fff;
+}
+
+.add-button::before {
+    top: -1em;
+    left: -1em;
+}
+
+.add-button::after {
+    left: calc(100% + 1em);
+    top: calc(100% + 1em);
+}
+
+.add-button:hover::before,
+.add-button:hover::after {
+    height: 410px;
+    width: 410px;
+}
+
+.add-button:hover {
+    color: #fff;
+}
+
+.add-button:active {
+    filter: brightness(.8);
+}
+
+.modal-button {
+    font-family: "DM Sans", sans-serif;
+    font-size: .9em;
+}
+
+.title-design {
+    font-family: "DM Sans", sans-serif;
+    font-size: 1em;
+    color: #003459;
+    font-weight: 600;
+}
+
+.control-label {
+    font-family: "DM Sans", sans-serif;
+    font-weight: 400;
+    font-size: .9em;
+    color: #025a6b;
+}
+
+.modal {
+    font-family: "DM Sans", sans-serif;
+}
+
+.btn-outline-primary {
+    width: 100%;
+}
+
+.modal-sched {
+    font-size: .9em;
+}
+
+.event-modal-header {
+    background-color: #003459;
+}
+
+.sched-label {
+    font-size: .9em;
+    color: #fff;
+}
+
+.sched-close {
+    font-size: .9em;
+    color: #fff;
+}

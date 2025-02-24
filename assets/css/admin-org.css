@@ -1,0 +1,259 @@
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 20px;
+}
+
+.toggle-input {
+    display: none;
+}
+
+.toggle-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ccc;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.toggle-input:checked+.toggle-label {
+    background-color: #003f88;
+    /* Change background color when toggled on */
+}
+
+.toggle-label:after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.toggle-input:checked+.toggle-label:after {
+    transform: translateX(20px);
+    /* Move the switch to the right when toggled on */
+}
+
+
+
+.genealogy-scroll::-webkit-scrollbar {
+    width: 5px;
+    height: 8px;
+}
+
+.genealogy-scroll::-webkit-scrollbar-track {
+    border-radius: none;
+    background-color: #e4e4e4;
+}
+
+.genealogy-scroll::-webkit-scrollbar-thumb {
+    background: #b2b2b2;
+    border-radius: none;
+    transition: 0.5s;
+}
+
+.genealogy-scroll::-webkit-scrollbar-thumb:hover {
+    background: #75bef3;
+    transition: 0.5s;
+}
+
+
+.genealogy-body {
+    /**
+    white-space: nowrap;
+    **/
+    overflow-y: hidden;
+    min-height: 100%;
+    padding-top: 10px;
+}
+
+.genealogy-tree ul {
+    padding-top: 19px;
+    position: relative;
+    /* Padding-left to maximize the card size*/
+    padding-left: 0px;
+    display: flex;
+}
+
+.genealogy-tree li {
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+}
+
+.genealogy-tree li::before,
+.genealogy-tree li::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 3px solid #3f3f3f;
+    color: #3f3f3f;
+    width: 50%;
+    height: 20px;
+}
+
+.genealogy-tree li::after {
+    /* Adding this to have a line on left side of our HALF LEFT LINES and it will look a line in center to all cards that on left position*/
+    border-left: 3px solid #3f3f3f;
+    right: auto;
+    left: 50%;
+}
+
+.genealogy-tree li:only-child::after,
+.genealogy-tree li:only-child::before {
+    display: none;
+}
+
+.genealogy-tree li:only-child {
+    padding-top: 0;
+}
+
+.genealogy-tree li:first-child::before,
+.genealogy-tree li:last-child::after {
+    border: 0 none;
+}
+
+.genealogy-tree li:last-child::before {
+    border-right: 3px solid #3f3f3f;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+
+}
+
+.genealogy-tree li:first-child::after {
+    border-radius: 10px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+}
+
+.genealogy-tree ul ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 3px solid #3f3f3f;
+    height: 20px;
+}
+
+.genealogy-tree li a {
+    text-decoration: none;
+    color: #666;
+    display: inline-block;
+}
+
+.genealogy-tree li a:hover+ul li::after,
+.genealogy-tree li a:hover+ul li::before,
+.genealogy-tree li a:hover+ul::before,
+.genealogy-tree li a:hover+ul ul::before {
+    border-color: #1982c4;
+}
+
+.member-view-box {
+    padding: 15px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
+        0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
+        0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+.member-image img {
+    width: 100px;
+    border-radius: 7px;
+    border: 5px solid #003459;
+    z-index: 1;
+}
+
+.member-details {
+    padding-top: 5px;
+
+}
+
+.name {
+    text-transform: uppercase;
+    font-family: "Reddit Mono", monospace;
+    font-weight: 700;
+    font-size: 12px;
+}
+
+.name2 {
+    font-family: "Reddit Mono", monospace;
+    font-weight: 600;
+    font-size: 12px;
+    color: #003459;
+}
+
+.dept_name {
+    text-transform: uppercase;
+    text-align: left;
+    font-family: "DM Sans", sans-serif;
+    font-size: 9px;
+    font-weight: 700;
+    color: #111;
+    margin-left: 5px;
+}
+
+
+.positions {
+    text-transform: uppercase;
+    font-family: "Reddit Mono", monospace;
+    font-weight: 600;
+    font-size: 10px;
+    border-radius: 5px;
+    background-color: transparent;
+    border: 1px solid #ccc;
+    color: #033f63;
+
+}
+
+.card-header {
+    color: white;
+    border-radius: 7px;
+    font-size: 12px;
+    text-transform: uppercase;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 700;
+    text-align: left;
+    background-color: #003459;
+}
+
+.card-footer2 {
+    border-bottom-right-radius: 7px;
+    border-bottom-left-radius: 7px;
+    font-size: .4em;
+    text-transform: uppercase;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    color: #fff;
+}
+
+.info-button {
+    color: #003459;
+    font-weight: 600;
+    font-size: 1.6em;
+    width: 100%;
+}
+
+#bottom-right-button {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+#bottom-left-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Cards</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 10px;
+        }
+        .card {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+        .card h3 {
+            margin: 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .card p {
+            font-size: 14px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .count {
+            float: right;
+            font-size: 20px;
+            font-weight: bold;
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title">Hatfugan</div>
+            <div class="card">
+                <h3>Abegail Fulong</h3>
+                <p><i>Completed Appointments:</i> <span class="count">10</span></p>
+            </div>
+        <div class="card">
+            <h3>Abegail Fulong</h3>
+            <p><i>Completed Appointments:</i> <span class="count">5</span></p>
+        </div>
+        <div class="card">
+            <h3>Abegail Fulong</h3>
+            <p><i>Completed Appointments:</i> <span class="count">0</span></p>
+        </div>
+    </div>
+</body>
+</html>
